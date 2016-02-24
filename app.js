@@ -10,9 +10,13 @@ onEvent(document, 'action').subscribe(function(e){
   publish(e.detail.name,e.detail.data);
 })
 
-var model = Immutable({people:["Richard","Veronica","Ashton","Justin"]});
-listen("updateModel").subscribe(function(m){
+var model = new Freezer({people:["Richard","Veronica","Ashton","Justin"]});
+//When any change occurs in immutable data structure
+model.on("update",function(m){
   model = m;
   view.model=model
 })
+//set model to js friendly version
+model = model.get()
+//set view's model
 view.model = model;
