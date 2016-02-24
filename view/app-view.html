@@ -1,0 +1,13 @@
+<dom-module id="app-view">
+  <template>
+    <div> Employee list: </div>
+    <template is="dom-repeat" items="[[model.people]]">
+        <parent-element name="[[item]]"></parent-element>
+    </template>
+  </template>
+  <script>Polymer({ready: function(){
+    this.addEventListener("jumble",function(){
+      this.fire("action",{name:"jumbleNames",data:this.model})
+    })
+  }});</script>
+</dom-module>

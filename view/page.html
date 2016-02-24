@@ -1,0 +1,17 @@
+<dom-module id="parent-element">
+    <template>
+        <style>
+          :host {
+            display: block;
+          }
+        </style>
+        hey [[name]]!<paper-button raised on-click="handleClick">New Name</paper-button>
+    </template>
+    <script>
+    	Polymer({
+          handleClick: function() {
+              this.fire("jumble")
+          }
+      });
+    </script>
+</dom-module>
