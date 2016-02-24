@@ -5,12 +5,12 @@
             display: block;
           }
         </style>
-        hey [[name]]!<paper-button raised on-click="handleClick">New Name</paper-button>
+        [[name]]<paper-button raised on-click="handleClick">Delete</paper-button>
     </template>
     <script>
     	Polymer({
           handleClick: function() {
-              this.fire("jumble")
+              this.fire("action",{name:"removePerson",data:{group:this.group,index:this.index}})
           }
       });
     </script>

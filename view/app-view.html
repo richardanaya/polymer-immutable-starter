@@ -1,13 +1,14 @@
 <dom-module id="app-view">
   <template>
-    <div> Employee list: </div>
     <template is="dom-repeat" items="[[model.people]]">
-        <parent-element name="[[item]]"></parent-element>
+        <parent-element group="[[model]]" name="[[item]]" index="[[index]]"></parent-element>
     </template>
+    <input id="personInput"></input><paper-button on-click="handleAddPerson">Add</paper-button>
   </template>
-  <script>Polymer({ready: function(){
-    this.addEventListener("jumble",function(){
-      this.fire("action",{name:"jumbleNames",data:this.model})
-    })
-  }});</script>
+  <script>Polymer({
+    handleAddPerson: function(){
+      this.fire("action",{name:"addPerson",data:{group:this.model,name:this.$.personInput.value}})
+      this.$.personInput.value = "";
+    }
+  });</script>
 </dom-module>
