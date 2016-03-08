@@ -1,6 +1,7 @@
 //Setup nicer functions
-var publish = pubsub.publish;
-var listen = pubsub.subscribe;
+var eventbus = pubsub.create();
+var publish = eventbus.publish;
+var listen = eventbus;
 var onEvent = Rx.Observable.fromEvent;
 
 //Setup our views to pump through actions
